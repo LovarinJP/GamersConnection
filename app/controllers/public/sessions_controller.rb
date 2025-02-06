@@ -25,6 +25,13 @@ class Public::SessionsController < Devise::SessionsController
   #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
   # end
 
+  #ゲストログインの定義
+  def guest_login
+    user = User.find_by(email: 'guest@example.com')
+    sign_in(user)
+    redirect_to mypage_path, notice: "ゲストユーザとしてログインしました"
+  end
+
   #サインイン後のパス
   def after_sign_in_path_for(resource)
     mypage_path
@@ -32,6 +39,6 @@ class Public::SessionsController < Devise::SessionsController
 
   #サインアウト後のパス
   def after_sign_out_path_for(resource)
-    about_path
+    root_path
   end
 end

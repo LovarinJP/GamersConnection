@@ -3,6 +3,9 @@ Rails.application.routes.draw do
     registrations: "public/registrations",
     sessions: "public/sessions"
   }
+  devise_scope :user do
+    get 'guest_login' => 'public/sessions#guest_login'
+  end
 
   devise_for :admins,skip: [:registrations, :passwords], controllers: {
     sessions: "admin/sessions"
@@ -12,7 +15,7 @@ Rails.application.routes.draw do
   scope module: :public do
     root to: "homes#top"
     get "about" => "homes#about"
-    get "mypage" => "homes#mypage", as: "mypage"
+    get "mypage" => "users#mypage", as: "mypage"
     resources :users, only: [:edit, :show, :update, :destroy] do
       member do
         get :follows, :followeds, :favorites
