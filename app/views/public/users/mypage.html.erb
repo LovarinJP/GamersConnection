@@ -1,2 +1,32 @@
-<h1>Public::Users#mypage</h1>
-<p>Find me in app/views/public/users/mypage.html.erb</p>
+<div class="container">
+  <div class="row d-flex justify-content-center">
+    <div class="col-6 text-center">
+      <p style="font-size: 3rem;">マイページ</p>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-2">
+      <div class="d-flex justify-content-center">
+        <%= image_tag @user.get_profile_image(150, 150) %>
+      </div>
+      <div class="text-center">
+        <b><%= @user.nickname %></b>
+      </div>
+    </div>
+    <div class="col-9 offset-1">
+      <% @posts.each do |post| %>
+        <%= render 'public/posts/post_list', post: post %>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-4 offset-4 text-center">
+      <div class="pagination" style="font-size: 24px;">
+        <%= paginate @posts %>
+      </div>
+    </div>
+  </div>
+</div>
+

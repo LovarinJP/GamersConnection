@@ -6,6 +6,7 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+    <script src="https://kit.fontawesome.com/73eb502509.js" crossorigin="anonymous"></script>
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
@@ -15,7 +16,13 @@
     <header class="shadow-sm"  style="background-color: rgba(160, 32, 255, 1.0)">
       <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container">
-          <a class="navbar-brand text-white" href="/">Navbar</a>
+          <% if user_signed_in? %>
+            <%= link_to "Top", mypage_path, class: "text-white" %>
+          <% elsif admin_signed_in? %>
+            <%= link_to "Top", admin_root_path, class: "text-white" %>
+          <% else %>
+            <%= link_to "Top", root_path, class: "text-white" %>
+          <% end %>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
                         aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>

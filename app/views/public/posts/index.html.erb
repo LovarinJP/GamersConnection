@@ -1,2 +1,21 @@
-<h1>Public::Posts#index</h1>
-<p>Find me in app/views/public/posts/index.html.erb</p>
+<div class="container">
+  <div class="row d-flex justify-content-center">
+    <div class="col-6 text-center">
+      <p style="font-size: 3rem;">投稿一覧</p>
+    </div>
+  </div>
+
+  <% @posts.each do |post| %>
+    <%= link_to post_path(post), class: "text-dark" do %>
+      <%= render 'post_list', post: post %>
+    <% end %>
+  <% end %>
+
+  <div class="row">
+    <div class="col-4 offset-4 text-center">
+      <div class="pagination" style="font-size: 24px;">
+        <%= paginate @posts %>
+      </div>
+    </div>
+  </div>
+</div>
