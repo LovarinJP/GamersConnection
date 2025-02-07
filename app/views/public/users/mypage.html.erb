@@ -8,17 +8,21 @@
   <div class="row">
     <div class="col-2">
       <div class="d-flex justify-content-center">
-        <%= image_tag @user.get_profile_image(150, 150) %>
+        <%= link_to user_path(current_user) do %>
+          <%= image_tag @user.get_profile_image(150, 150) %>
+        <% end %>
       </div>
       <div class="text-center">
         <b><%= @user.nickname %></b>
       </div>
+      <%= link_to edit_user_path(current_user), class: "btn btn-secondary d-flex justify-content-center mt-2" do %>
+        <i class="fa-solid fa-user-gear text-light"></i>
+      <% end %>
     </div>
+
     <div class="col-9 offset-1">
       <% @posts.each do |post| %>
-        <%= link_to post_path(post), class: "text-dark" do %>
-          <%= render 'public/posts/post_list', post: post %>
-        <% end %>
+        <%= render 'public/posts/post_list', post: post %>
       <% end %>
     </div>
   </div>

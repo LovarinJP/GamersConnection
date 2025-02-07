@@ -1,2 +1,33 @@
-<h1>Public::Users#edit</h1>
-<p>Find me in app/views/public/users/edit.html.erb</p>
+<div class="container justify-content-center">
+  <div class="row mt-3 d-flex justify-content-center">
+    <div class="col-4 text-left">
+      <p style="font-size: 3rem;">ユーザー編集</p>
+    </div>
+  </div>
+
+  <div class="row mt-3 justify-content-center">
+    <div class="col-5">
+      <%= form_with model: @user, url: user_path(@user), method: :patch do |f| %>
+        <div class="d-flex justify-content-start">
+          <%= f.label :画像, style: "width: 80px;" %>
+          <%= f.file_field :profile_image, accept: "image/*", include_blank: "ファイルを選択" %>
+        </div>
+        <div class="d-flex justify-content-start">
+          <%= f.label :名前, style: "width: 80px;" %>
+          <%= f.text_field :name %>
+        </div>
+        <div class="d-flex justify-content-start">
+          <%= f.label :表示名, style: "width: 80px;" %>
+          <%= f.text_field :nickname %>
+        </div>
+        <div style="display: flex; align-items: baseline;">
+          <%= f.label :自己紹介, style: "width: 90px;" %>
+          <%= f.text_area :caption, style: "width: 26rem; height: 8rem;"%>
+        </div>
+        <div class="mt-2 d-flex justify-content-end">
+          <%= f.submit "送信", class: "btn btn-info" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

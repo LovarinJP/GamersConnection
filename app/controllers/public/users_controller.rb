@@ -7,15 +7,24 @@ class Public::UsersController < ApplicationController
   end
 
   def edit
+    @user = User.find(params[:id])
   end
 
   def show
+    @user = User.find(params[:id])
   end
 
   def update
+    @user = User.find(params[:id])
+    @user.update(user_params)
+    redirect_to mypage_path(@user)
   end
 
-  def destroy
+  def withdraw
+    @user = current_user
+    @user.update(is_active: false)
+    reset_session
+    redirect_to root_path
   end
 
   def favorite
@@ -25,5 +34,11 @@ class Public::UsersController < ApplicationController
   end
 
   def followeds
+  end
+
+  private
+
+  def user_params
+    params.require(:user).permit(:name, :nickname, :caption, :profile_image)
   end
 end

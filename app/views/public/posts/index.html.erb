@@ -6,9 +6,7 @@
   </div>
 
   <% @posts.each do |post| %>
-    <%= link_to post_path(post), class: "text-dark" do %>
-      <%= render 'post_list', post: post %>
-    <% end %>
+    <%= render 'post_list', post: post %>
   <% end %>
 
   <div class="row">
