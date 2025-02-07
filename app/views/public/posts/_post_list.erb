@@ -12,7 +12,7 @@
   </div>
 
   <div class="row">
-    <div class="col-10 offset-2", style="font-size: 24px;">
+    <div class="col-6 offset-2", style="font-size: 24px;">
       <div>
         <%= post.body %>
       </div>
@@ -22,5 +22,11 @@
         </div>
       <% end %>
     </div>
+    <% if @editable %>
+      <div class="col-2 offset-2">
+        <%= link_to "編集", edit_post_path(@post), class: "btn btn-success" %>
+        <%= link_to "削除", post_path(@post), method: :delete, data: { confirm: "本当に削除しますか？" }, class: "btn btn-danger" %>
+      </div>
+    <% end %>
   </div>
 </div>
