@@ -26,8 +26,7 @@
             <i class="fa-solid fa-user-gear text-light"></i>
         <% end %>
       <% end %>
-      <% if @user == current_user %>
-        <%= link_to "退会する", withdraw_path, method: :patch, class: "btn btn-danger d-flex justify-content-center mt-2", data: { confirm: "本当に退会しますか？" } %>
-      <% end %>
     </div>
+  </div>
+</div>
 

@@ -41,7 +41,7 @@ class Public::SessionsController < Devise::SessionsController
 
   #サインアウト後のパス
   def after_sign_out_path_for(resource)
-    root_path
+    about_path
   end
 
   private

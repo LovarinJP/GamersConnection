@@ -10,4 +10,11 @@
       <%= render 'form', post: @post %>
     </div>
   </div>
+  <% if @editable %>
+    <div class="row mt-2 d-flex justify-content-center">
+      <div class="col-5 d-flex justify-content-end">
+        <%= link_to "削除", post_path(@post), method: :delete, data: { confirm: "本当に削除しますか？" }, class: "btn btn-danger" %>
+      </div>
+    </div>
+  <% end %>
 </div>

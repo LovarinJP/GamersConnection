@@ -30,4 +30,11 @@
       <% end %>
     </div>
   </div>
+  <% if @user == current_user %>
+    <div class="row mt-2 d-flex justify-content-center">
+      <div class="col-5 d-flex justify-content-end">
+        <%= link_to "退会", withdraw_path, method: :patch, class: "btn btn-danger", data: { confirm: "本当に退会しますか？" } %>
+      </div>
+    </div>
+  <% end %>
 </div>

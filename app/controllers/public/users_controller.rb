@@ -24,7 +24,7 @@ class Public::UsersController < ApplicationController
     @user = current_user
     @user.update(is_active: false)
     reset_session
-    redirect_to root_path
+    redirect_to new_user_registration_path
   end
 
   def favorite
