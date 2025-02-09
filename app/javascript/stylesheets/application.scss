@@ -7,3 +7,21 @@
 .pagination {
   font-size: 24px;
 }
+
+.flash_message {
+  border-radius: 5px;
+  padding: 8px 24px;
+  margin: 8px 24px;
+}
+
+.flash_message.notice {
+  background-color: #bcdfff;
+  color: #0067c0;
+  border: solid 1px #0067c0;
+}
+
+.flash_message.alert {
+  background-color: #ffd4d1;
+  color: #930403;
+  border: solid 1px #930403;
+}

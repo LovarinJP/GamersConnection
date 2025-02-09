@@ -22,6 +22,8 @@ class User < ApplicationRecord
   has_many :passive_relationships, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
   has_many :followeds, through: :followeds, source: :follow
 
+  validates :name, presence: true
+  validates :nickname, presence: true
   validates :caption, length: { maximum: 150 }
 
   def get_profile_image(width, height)
