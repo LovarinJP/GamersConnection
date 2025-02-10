@@ -13,7 +13,7 @@ class Public::PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
-    @post_detail = true
+    @detail_page = true
   end
 
   def create

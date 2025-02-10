@@ -1,2 +1,39 @@
-<h1>Admin::Users#show</h1>
-<p>Find me in app/views/admin/users/show.html.erb</p>
+<div class="container">
+  <div class="row d-flex justify-content-center">
+    <div class="col-6 text-center">
+      <p class="pheader">ユーザー詳細</p>
+    </div>
+  </div>
+
+  <div class="row d-flex justify-content-center">
+    <div class="col-5">
+      <div class="d-flex justify-content-center">
+        <%= image_tag @user.get_profile_image(200, 200) %>
+      </div>
+
+      <table class="d-flex justify-content-center">
+        <tr>
+          <td class="user-table"><b>名前：</b></td>
+          <td class="user"><b><%= @user.name %></td>
+        </tr>
+        <tr>
+          <td class="user-table"><b>ニックネーム：</b></td>
+          <td class="user"><b><%= @user.nickname %></b></td>
+        </tr>
+        <tr>
+          <td class="user-table"><b>紹介文：</b></td>
+          <td class="user"><%= @user.caption %></td>
+        </tr>
+        <tr>
+          <td colspan="2">
+            <% if @user.is_active == false %>
+              <div class="explain mt-2 text-center text-danger">
+                <b><%= @user.nickname %>さんは退会済です</b>
+              </div>
+            <% end %>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
