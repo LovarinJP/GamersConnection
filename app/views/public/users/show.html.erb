@@ -6,26 +6,39 @@
   </div>
 
   <div class="row d-flex justify-content-center">
-    <div class="col-3">
+    <div class="col-5">
       <div class="d-flex justify-content-center">
         <%= image_tag @user.get_profile_image(200, 200) %>
       </div>
-      <div class="text-center" style="font-size: 24px;">
-        <b><%= @user.nickname %></b>
-      </div>
-      <div class="mt-2 text-center" style="font-size: 16px;">
-        <%= @user.caption %>
-      </div>
-      <% if @user.is_active == false %>
-        <div class="mt-2 text-center text-danger" style="font-size: 16px;">
-          <b><%= @user.nickname %>さんは退会済です</b>
-        </div>
-      <% end %>
-      <% if @user == current_user %>
-        <%= link_to edit_user_path(current_user), class: "btn btn-secondary d-flex justify-content-center mt-2" do %>
-            <i class="fa-solid fa-user-gear text-light"></i>
-        <% end %>
-      <% end %>
+
+      <table class="d-flex justify-content-center">
+        <tr>
+          <td class="user-table"><b>ニックネーム：</b></td>
+          <td class="user"><b><%= @user.nickname %></b></td>
+        </tr>
+        <tr>
+          <td class="user-table"><b>紹介文：</b></td>
+          <td class="user"><%= @user.caption %></td>
+        </tr>
+        <tr>
+          <td colspan="2">
+            <% if @user.is_active == false %>
+              <div class="explain mt-2 text-center text-danger">
+                <b><%= @user.nickname %>さんは退会済です</b>
+              </div>
+            <% end %>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2">
+            <% if @user == current_user %>
+              <%= link_to edit_user_path(current_user), class: "btn btn-secondary d-flex justify-content-center mt-2" do %>
+                  <i class="fa-solid fa-user-gear text-light"></i>
+              <% end %>
+            <% end %>
+          </td>
+        </tr>
+      </table>
     </div>
   </div>
 </div>
