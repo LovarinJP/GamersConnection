@@ -1,11 +1,18 @@
 class Public::SearchesController < ApplicationController
-  def search
-    @range = params[:range]
 
-    if @range == "User"
-      @users = User.looks(params[:search], params[:word])
-    else
-      @posts = Post.looks(params[:search], params[:word])
-    end
+  def search
+    word = params['word']
+    @users = partical_user(word)
+    @posts = partical_post(word)
+  end
+
+  private
+
+  def partical_user(word)
+    User.where('nickname LIKE ?', "%#{word}%")
+  end
+
+  def partical_post(word)
+    Post.where('body LIKE ?', "%#{word}%")
   end
 end

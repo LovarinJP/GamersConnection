@@ -14,11 +14,4 @@ class Post < ApplicationRecord
     end
   end
 
-  def self.looks(search, word)
-    if search == "partical_match"
-      @post = Post.where("body LIKE?", "%#{word}%")
-    else
-      @post = Post.all
-    end
-  end
 end
