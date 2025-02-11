@@ -4,7 +4,6 @@ document.addEventListener('turbolinks:load', function() {
   
   tabs.forEach((tab, index) => {
     tab.addEventListener('click', () => {
-      // すべてのタブとコンテンツを非表示にする
       tabs.forEach(t => {
         t.classList.remove('tab-active');
       });
@@ -12,9 +11,8 @@ document.addEventListener('turbolinks:load', function() {
         content.classList.remove('box-show');
       });
 
-      // クリックされたタブを表示する
       tab.classList.add('tab-active');
-      const selectedTag = tab.textContent.trim(); // タブ名を取得（UserやPost）
+      const selectedTag = tab.textContent.trim();
       tabContents.forEach(content => {
         if(content.dataset.tag === selectedTag) {
           content.classList.add('box-show');
