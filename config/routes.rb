@@ -23,9 +23,10 @@ Rails.application.routes.draw do
       end
       resource :relationships, only: [:create, :destroy]
     end
-    resources :posts
+    resources :posts do
+      resources :comments, except: [:edit, :update]
+    end
     resources :favorites, only: [:create, :destroy]
-    resources :comments, except: [:edit, :update]
     resources :rooms, only: [:create, :show] do
       resources :messages, only: [:create, :destroy]
     end

@@ -1,2 +1,24 @@
-<h1>Public::Comments#new</h1>
-<p>Find me in app/views/public/comments/new.html.erb</p>
+<div class="container">
+  <div class="row d-flex justify-content-center">
+    <div class="col-6 text-center">
+      <p class="pheader">コメント作成</p>
+    </div>
+  </div>
+
+  <div class="row mt-3 justify-content-center">
+    <div class="col-5">
+      <%= form_with model: @comment,url: post_comments_path, method: :post do |f| %>
+        <div class="d-flex justify-content-start">
+          <%= f.label :画像, style: "width: 60px;" %>
+          <%= f.file_field :image, accept: "image/*", include_blank: "ファイルを選択" %>
+        </div>
+        <div style="display: flex; align-items: baseline;">
+          <%= f.text_area :comment, style: "width: 26rem; height: 8rem;"%>
+        </div>
+        <div class="mt-2 d-flex justify-content-end">
+          <%= f.submit "送信", class: "btn btn-info" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
