@@ -33,4 +33,12 @@ class User < ApplicationRecord
     end
     profile_image.variant(resize_to_fill: [width, height]).processed
   end
+
+  def self.looks(search, word)
+    if search == "partical_match"
+      @user = User.where("nickname LIKE?", "%#{word}%")
+    else
+      @user = User.all
+    end
+  end
 end

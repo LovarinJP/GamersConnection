@@ -16,6 +16,7 @@ Rails.application.routes.draw do
     root to: "homes#top"
     get "about" => "homes#about"
     get "mypage" => "users#mypage", as: "mypage"
+    get "search" => "searches#search"
     patch "users/withdraw" => "users#withdraw", as: "withdraw"
     resources :users, only: [:edit, :show, :update,] do
       member do
