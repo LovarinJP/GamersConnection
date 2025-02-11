@@ -2,7 +2,7 @@ document.addEventListener('turbolinks:load', function() {
   const tabs = document.querySelectorAll('.tab-list .tab');
   const tabContents = document.querySelectorAll('.tabbox-contents .tabbox');
   
-  tabs.forEach((tab, index) => {
+  tabs.forEach((tab) => {
     tab.addEventListener('click', () => {
       tabs.forEach(t => {
         t.classList.remove('tab-active');
