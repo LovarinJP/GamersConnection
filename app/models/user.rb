@@ -33,4 +33,5 @@ class User < ApplicationRecord
     end
     profile_image.variant(resize_to_fill: [width, height]).processed
   end
+
 end

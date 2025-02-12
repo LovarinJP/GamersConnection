@@ -1,0 +1,52 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-12">
+      <ul class="tab-list list-unstyled d-flex">
+        <li class="tab tab-active text-center">
+          User
+        </li>
+        <li class="tab text-center">
+          Post
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="tabbox-contents">
+    <div class="tabbox box-show" data-tag="User">
+      <table class="table border-top border-bottom table-hover table-inverse">
+        <tbody>
+          <% @users.each do |user| %>
+            <tr>
+              <td class="result-head">
+                <%= image_tag user.get_profile_image(75, 75) %>
+              </td>
+              <td class="align-middle">
+                <%= link_to user_path(user), class: "text-dark" do %>
+                  <b><%= user.nickname %></b>
+                <% end %>
+              </td>
+              <td class="result-foot align-middle"><%= user.caption %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+    <div class="tabbox" data-tag="Post">
+      <table class="table border-top border-bottom table-hover table-inverse">
+        <tbody>
+          <% @posts.each do |post| %>
+            <tr>
+              <td class="result-head"><%= image_tag post.user.get_profile_image(50, 50) %> <%= post.user.nickname %></td>
+              <td class="align-middle">
+                <%= link_to post_path(post), class: "text-dark" do %>
+                  <b><%= post.body %></b>
+                <% end %>
+              </td>
+              <td class="result-foot align-middle"><i class="fa-regular fa-comment"></i> <%= post.comments.count %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
