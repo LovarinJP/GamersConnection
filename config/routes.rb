@@ -25,7 +25,7 @@ Rails.application.routes.draw do
       resource :relationships, only: [:create, :destroy]
     end
     resources :posts do
-      resources :comments, except: [:edit, :update]
+      resources :comments, except: [:edit, :update, :index]
     end
     resources :favorites, only: [:create, :destroy]
     resources :rooms, only: [:create, :show] do
@@ -39,9 +39,11 @@ Rails.application.routes.draw do
   #管理者用ルーティング
   namespace :admin do
     root to: "homes#top"
-    resources :posts, only: [:index, :show, :destroy]
-    resources :comments, only: [:index, :show, :destroy]
-    resources :users, only: [:index, :show, :destroy]
+    patch "users/withdraw" => "users#withdraw"
+    resources :posts, only: [:index, :show, :destroy] do
+      resources :comments, only: [:show, :destroy]
+    end
+    resources :users, only: [:index, :show]
     resources :groups, only: [:index, :show, :destroy]
   end
 

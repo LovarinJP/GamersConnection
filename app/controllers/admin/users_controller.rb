@@ -8,9 +8,11 @@ class Admin::UsersController < ApplicationController
     @detail_page = true
   end
 
-  def destroy
+  def withdraw
     @user = User.find(params[:id])
-    @user.destroy
+    @user.update(is_active: false)
+    reset_session
+    flash[:notice] = "退会させました"
     redirect_to admin_users_path
   end
 end
