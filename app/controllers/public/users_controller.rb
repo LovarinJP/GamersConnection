@@ -1,6 +1,7 @@
 class Public::UsersController < ApplicationController
   before_action :authenticate_user!
   before_action :is_matching_login_user, only: [:edit, :update]
+  before_action :check_guest, only: [:edit, :update]
 
   def mypage
     @posts = current_user.posts.order(created_at: :desc).page(params[:page]).per(5)
@@ -53,6 +54,13 @@ class Public::UsersController < ApplicationController
     user = User.find(params[:id])
     unless user.id == current_user.id
       redirect_to mypage_path(user)
+    end
+  end
+
+  def check_guest
+    if current_user.guest?
+      flash[:alert] = "ゲストユーザは編集できません"
+      redirect_to mypage_path(current_user)
     end
   end
 end

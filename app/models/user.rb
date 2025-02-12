@@ -34,4 +34,7 @@ class User < ApplicationRecord
     profile_image.variant(resize_to_fill: [width, height]).processed
   end
 
+  def guest?
+    email == 'guest@example.com'
+  end
 end
