@@ -1,6 +1,6 @@
 <div class="container justify-content-center">
   <div class="row mt-3 d-flex justify-content-center">
-    <div class="col-5 text-left">
+    <div class="col-md-5 col-12">
       <p class="pheader">ユーザー一覧</p>
     </div>
   </div>
@@ -8,32 +8,32 @@
   <% @users.each do |user| %>
     <div class="border-top border-bottom">
       <div class="user-row row">
-        <div class="col-2">
+        <div class="col-md-2 col-4">
           <%= link_to admin_user_path(user) do %>
             <%= image_tag user.get_profile_image(100, 100), class: "image" %>
           <% end %>
         </div>
-        <div class="user col-4 text-left">
+        <div class="user col-md-4 col-4 text-left">
           <% if user.is_active == true %>
             <b><%= user.nickname %></b>
           <% else %>
             <b class="text-danger"><%= user.nickname %></b>
           <% end %>
         </div>
-        <div class="col-2 offset-2 text-secondary">
+        <div class="col-md-2 offset-md-2 col-3 text-secondary">
           <%= user.name %>
         </div>
       </div>
 
 
       <div class="row align-items-end">
-        <div class="user col-6 offset-2">
+        <div class="user col-md-6 offset-md-2 col-12">
           <div>
             <%= user.caption %>
           </div>
         </div>
         <% if defined? @detail_page %>
-          <div class="col-2 offset-2">
+          <div class="col-md-2 offset-md-2 col-12">
             <%= link_to "削除", admin_post_path(post), method: :delete, data: { confirm: "本当に削除しますか？" }, class: "btn btn-danger" %>
           </div>
         <% end %>

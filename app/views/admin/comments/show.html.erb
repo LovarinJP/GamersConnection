@@ -1,37 +1,37 @@
 <div class="container justify-content-center">
   <div class="row mt-3 d-flex justify-content-center">
-    <div class="col-4 text-left">
+    <div class="col-md-4 col-12">
       <p class="pheader">コメント詳細</p>
     </div>
   </div>
 
   <div class="border-top border-bottom">
     <div class="post-row row">
-      <div class="col-2">
+      <div class="col-md-2 col-4">
         <%= link_to admin_user_path(@comment.user) do %>
           <%= image_tag @comment.user.get_profile_image(100, 100), class: "image" %>
         <% end %>
       </div>
-      <div class="post col-4 text-left">
+      <div class="post col-md-4 col-4 text-left">
         <b><%= @comment.user.nickname %></b>
       </div>
-      <div class="col-2 offset-2 text-secondary">
+      <div class="col-md-2 offset-md-2 col-3 text-secondary">
         <%= @comment.created_at.strftime("%-m/%-d %H:%M") %>
       </div>
     </div>
 
     <div class="row align-items-end">
-      <div class="post col-6 offset-2">
+      <div class="post col-md-6 offset-md-2 col-12">
         <div>
           <%= @comment.comment %>
         </div>
       </div>
       <% if @comment.image.present? %>
-        <div class="col-6 offset-2">
-          <%= image_tag @comment.get_image(400, 500) %>
+        <div class="col-md-6 offset-md-2 col-12">
+          <%= image_tag @comment.get_image(300, 300) %>
         </div>
       <% end %>
-        <div class="col-2 offset-2">
+        <div class="col-md-2 offset-md-2 col-12">
           <%= link_to "削除", admin_post_comment_path(post_id: @post.id, id: @comment.id), method: :delete, data: { confirm: "本当に削除しますか？" }, class: "btn btn-danger" %>
         </div>
     </div>

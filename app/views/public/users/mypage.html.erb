@@ -1,12 +1,12 @@
 <div class="container">
   <div class="row d-flex justify-content-center">
-    <div class="col-6 text-center">
+    <div class="col-md-6 col-12 text-center">
       <p  class="pheader">マイページ</p>
     </div>
   </div>
 
   <div class="row">
-    <div class="col-2">
+    <div class="col-md-2 col-12">
       <div class="d-flex justify-content-center">
         <%= link_to user_path(current_user) do %>
           <%= image_tag @user.get_profile_image(150, 150), class: "image" %>
@@ -20,7 +20,7 @@
       <% end %>
     </div>
 
-    <div class="col-9 offset-1">
+    <div class="col-md-9 offset-md-1 col-12">
       <% @posts.each do |post| %>
         <%= render 'public/posts/post_list', post: post %>
       <% end %>
@@ -28,7 +28,7 @@
   </div>
 
   <div class="row">
-    <div class="col-4 offset-4 text-center">
+    <div class="col-4 offset-4 col-12 text-center">
       <div class="pagination">
         <%= paginate @posts %>
       </div>

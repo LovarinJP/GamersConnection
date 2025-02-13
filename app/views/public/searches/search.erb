@@ -21,7 +21,7 @@
               <td class="result-head">
                 <%= image_tag user.get_profile_image(75, 75) %>
               </td>
-              <td class="align-middle">
+              <td class="td-body align-middle">
                 <%= link_to user_path(user), class: "text-dark" do %>
                   <b><%= user.nickname %></b>
                 <% end %>
@@ -38,7 +38,7 @@
           <% @posts.each do |post| %>
             <tr>
               <td class="result-head"><%= image_tag post.user.get_profile_image(50, 50) %> <%= post.user.nickname %></td>
-              <td class="align-middle">
+              <td class="td-body align-middle">
                 <%= link_to post_path(post), class: "text-dark" do %>
                   <b><%= post.body %></b>
                 <% end %>
