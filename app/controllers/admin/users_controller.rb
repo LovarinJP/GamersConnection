@@ -15,4 +15,17 @@ class Admin::UsersController < ApplicationController
     flash[:notice] = "退会させました"
     redirect_to admin_users_path
   end
+
+  def favorites
+  end
+
+  def follows
+    user = User.find(params[:id])
+    @users = user.follows
+  end
+
+  def followeds
+    user = User.find(params[:id])
+    @users = user.followeds
+  end
 end

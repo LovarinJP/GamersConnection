@@ -15,11 +15,21 @@
       <div class="text-center">
         <b><%= @user.nickname %></b>
       </div>
+      <div class="text-center">
+        <%= @user.caption %>
+      </div>
+      <div class="text-left">
+        フォロー　：<%= @user.follows.count %>
+      </div>
+      <div class="text-left">
+        フォロワー：<%= @user.followeds.count %>
+      </div>
       <%= link_to edit_user_path(current_user), class: "btn btn-secondary d-flex justify-content-center mt-2" do %>
         <i class="fa-solid fa-user-gear text-light"></i>
       <% end %>
     </div>
 
+    
     <div class="col-md-9 offset-md-1 col-12">
       <% @posts.each do |post| %>
         <%= render 'public/posts/post_list', post: post %>
