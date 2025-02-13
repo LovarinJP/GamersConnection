@@ -21,6 +21,10 @@
   font-size: 16px;
 }
 
+.image:hover {
+  transform: translateY(-1px);
+}
+
 .result-head {
   width: 20%;
 }

@@ -9,7 +9,7 @@
     <div class="col-2">
       <div class="d-flex justify-content-center">
         <%= link_to user_path(current_user) do %>
-          <%= image_tag @user.get_profile_image(150, 150) %>
+          <%= image_tag @user.get_profile_image(150, 150), class: "image" %>
         <% end %>
       </div>
       <div class="text-center">
