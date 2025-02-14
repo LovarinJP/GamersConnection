@@ -67,5 +67,8 @@
         <i class="fa-regular fa-comment"></i> <%= post.comments.count %>
       <% end %>
     </div>
+    <div id="favorite_btn_<%= post.id %>" class="col-md-2 col text-center">
+      <%= render 'public/favorites/btn', post: post %>
+    </div>
   </div>
 </div>

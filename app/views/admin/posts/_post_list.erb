@@ -52,5 +52,9 @@
     <div class="col-md-2 offset-md-2 col text-center">
         <i class="fa-regular fa-comment"></i> <%= post.comments.count %>
     </div>
+    <div class="col-md-2 col text-center">
+      <i class="fa-solid fa-heart text-primary"></i>
+      <%= post.favorites.count %> いいね
+    </div>
   </div>
 </div>
