@@ -3,17 +3,17 @@
     <div class="col-12">
       <ul class="tab-list list-unstyled d-flex">
         <li class="tab tab-active text-center">
-          User
+          ユーザー
         </li>
         <li class="tab text-center">
-          Post
+          投稿
         </li>
       </ul>
     </div>
   </div>
 
   <div class="tabbox-contents">
-    <div class="tabbox box-show" data-tag="User">
+    <div class="tabbox box-show" data-tag="ユーザー">
       <table class="table border-top border-bottom table-hover table-inverse">
         <tbody>
           <% @users.each do |user| %>
@@ -32,7 +32,7 @@
         </tbody>
       </table>
     </div>
-    <div class="tabbox" data-tag="Post">
+    <div class="tabbox" data-tag="投稿">
       <table class="table border-top border-bottom table-hover table-inverse">
         <tbody>
           <% @posts.each do |post| %>
@@ -50,3 +50,4 @@
       </table>
     </div>
   </div>
+</div>
