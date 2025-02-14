@@ -43,7 +43,11 @@ Rails.application.routes.draw do
     resources :posts, only: [:index, :show, :destroy] do
       resources :comments, only: [:show, :destroy]
     end
-    resources :users, only: [:index, :show]
+    resources :users, only: [:index, :show] do
+      member do
+        get :follows, :followeds, :favorites
+      end
+    end
     resources :groups, only: [:index, :show, :destroy]
   end
 

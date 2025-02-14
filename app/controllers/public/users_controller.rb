@@ -34,14 +34,18 @@ class Public::UsersController < ApplicationController
     flash[:notice] = "退会完了しました"
     redirect_to new_user_registration_path
   end
-
-  def favorite
+  
+  def favorites
   end
 
   def follows
+    user = User.find(params[:id])
+    @users = user.follows
   end
 
   def followeds
+    user = User.find(params[:id])
+    @users = user.followeds
   end
 
   private

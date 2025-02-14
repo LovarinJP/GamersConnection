@@ -25,6 +25,14 @@
           <td class="user"><%= @user.caption %></td>
         </tr>
         <tr>
+          <td class="user-table"><b>フォロー：</b></td>
+          <td class="user"><%= link_to @user.follows.count, follows_admin_user_path(@user), class: "text-dark" %></td>
+        </tr>
+        <tr>
+          <td class="user-table"><b>フォロワー：</b></td>
+          <td class="user"><%= link_to @user.followeds.count, followeds_admin_user_path(@user), class: "text-dark" %></td>
+        </tr>
+        <tr>
           <td colspan="2">
             <% if @user.is_active == false %>
               <div class="explain mt-2 text-center text-danger">

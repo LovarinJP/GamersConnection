@@ -1,0 +1,29 @@
+<% users.each do |user| %>
+  <div class="border-top border-bottom">
+    <div class="user-row row">
+      <div class="col-md-2 col-4">
+        <%= link_to admin_user_path(user) do %>
+          <%= image_tag user.get_profile_image(100, 100), class: "image" %>
+        <% end %>
+      </div>
+      <div class="user col-md-4 col-4 text-left">
+        <% if user.is_active == true %>
+          <b><%= user.nickname %></b>
+        <% else %>
+          <b class="text-danger"><%= user.nickname %></b>
+        <% end %>
+      </div>
+      <div class="col-md-2 offset-md-2 col-3 text-secondary">
+        <%= user.name %>
+      </div>
+    </div>
+
+
+    <div class="row align-items-end">
+      <div class="user col-md-6 offset-md-2 col-12">
+        <div>
+          <%= user.caption %>
+        </div>
+      </div>
+  </div>
+<% end %>

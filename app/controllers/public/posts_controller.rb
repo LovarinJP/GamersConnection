@@ -9,6 +9,8 @@ class Public::PostsController < ApplicationController
 
   def index
     @posts = Post.order(created_at: :desc).page(params[:page]).per(5)
+    following_ids = current_user.follows.pluck(:id)
+    @follow_posts = Post.where(user_id: following_ids).order(created_at: :desc).page(params[:page]).per(5)
   end
 
   def show

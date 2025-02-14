@@ -17,10 +17,10 @@ class User < ApplicationRecord
   has_many :messages, dependent: :destroy
   #フォローに関するアソシエーション
   has_many :active_relationships, class_name: "Relationship", foreign_key: "follow_id", dependent: :destroy
-  has_many :follows, through: :follows, source: :followed
+  has_many :follows, through: :active_relationships, source: :followed
   #フォロワーに関するアソシエーション
   has_many :passive_relationships, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
-  has_many :followeds, through: :followeds, source: :follow
+  has_many :followeds, through: :passive_relationships, source: :follow
 
   validates :name, presence: true
   validates :nickname, presence: true
@@ -36,5 +36,17 @@ class User < ApplicationRecord
 
   def guest?
     email == 'guest@example.com'
+  end
+
+  def follow(user)
+    active_relationships.create(followed_id: user.id)
+  end
+
+  def unfollow(user)
+    active_relationships.find_by(followed_id: user.id).destroy
+  end
+
+  def follows?(user)
+    follows.include?(user)
   end
 end
