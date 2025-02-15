@@ -1,0 +1,17 @@
+<table class="table border-top border-bottom table-hover table-inverse">
+  <tr>
+    <td>
+      <%= image_tag group.get_image(50, 50) %>
+    </td>
+    <td class="align-middle">
+      <%= group.name %>
+    </td>
+    <td class="td-body align-middle">
+      <%= group.caption %>
+    </td>
+    <td class="align-middle">
+      <%= link_to "編集", group_path(group), class: "btn btn-success" %>
+      <%= link_to "削除", group_path(group), method: :delete, data: { confirm: "本当に削除しますか？" }, class: "btn btn-danger" %>
+    </td>
+  </tr>
+</table>
