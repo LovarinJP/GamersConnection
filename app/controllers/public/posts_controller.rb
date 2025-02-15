@@ -9,8 +9,12 @@ class Public::PostsController < ApplicationController
 
   def index
     @posts = Post.order(created_at: :desc).page(params[:page]).per(5)
+    #フォローしているユーザの投稿一覧を取得
     following_ids = current_user.follows.pluck(:id)
     @follow_posts = Post.where(user_id: following_ids).order(created_at: :desc).page(params[:page]).per(5)
+    #いいねした投稿の一覧を取得
+    favorites_post_ids = Favorite.where(user_id: current_user.id).pluck(:post_id)
+    @favorite_posts = Post.where(id: favorites_post_ids).page(params[:page]).per(5)
   end
 
   def show

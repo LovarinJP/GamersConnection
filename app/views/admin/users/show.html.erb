@@ -33,6 +33,9 @@
           <td class="user"><%= link_to @user.followeds.count, followeds_admin_user_path(@user), class: "text-dark" %></td>
         </tr>
         <tr>
+          <td colspan="2"><%= link_to "いいね一覧", favorites_admin_user_path(@user), class: "btn btn-light d-flex justify-content-center border rounded" %></td>
+        </tr>
+        <tr>
           <td colspan="2">
             <% if @user.is_active == false %>
               <div class="explain mt-2 text-center text-danger">

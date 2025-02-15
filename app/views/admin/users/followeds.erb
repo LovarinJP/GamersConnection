@@ -6,4 +6,13 @@
   </div>
 
   <%= render 'list', users: @users %>
+
+  <div class="row">
+    <div class="col-4 offset-4 text-center">
+      <div class="pagination">
+        <%= paginate @users %>
+      </div>
+    </div>
+  </div>
+  
 </div>

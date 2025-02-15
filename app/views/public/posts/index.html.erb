@@ -8,6 +8,9 @@
         <li class="tab text-center">
           Follow
         </li>
+        <li class="tab text-center">
+          Favorite
+        </li>
       </ul>
     </div>
   </div>
@@ -26,6 +29,11 @@
     </div>
     <div class="tabbox" data-tag="Follow">
       <% @follow_posts.each do |post| %>
+        <%= render 'post_list', post: post %>
+      <% end %>
+    </div>
+    <div class="tabbox" data-tag="Favorite">
+      <% @favorite_posts.each do |post| %>
         <%= render 'post_list', post: post %>
       <% end %>
     </div>
