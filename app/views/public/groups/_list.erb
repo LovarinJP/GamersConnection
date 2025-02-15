@@ -1,6 +1,6 @@
 <table class="table border-top border-bottom table-hover table-inverse">
   <tr>
-    <td>
+    <td class="align-middle">
       <%= image_tag group.get_image(50, 50) %>
     </td>
     <td class="align-middle">
@@ -10,8 +10,23 @@
       <%= group.caption %>
     </td>
     <td class="align-middle">
-      <%= link_to "編集", group_path(group), class: "btn btn-success" %>
-      <%= link_to "削除", group_path(group), method: :delete, data: { confirm: "本当に削除しますか？" }, class: "btn btn-danger" %>
+      <% if defined? @detail_page %>
+        <% group.group_users.each do |group_user| %>
+          <%= group_user.user.nickname %>
+        <% end %>
+      <% else %>
+        参加者：<%= group.group_users.count %>人
+      <% end %>
+    </td>
+    <td class="align-middle">
+      <% if group.owner_id == current_user.id %>
+        <%= link_to "編集", group_path(group), class: "btn btn-success" %>
+        <%= link_to "削除", group_path(group), method: :delete, data: { confirm: "本当に削除しますか？" }, class: "btn btn-danger" %>
+      <% elsif group.owner_id != current_user.id && group.users.include?(current_user) %>
+        <%= link_to "グループから退会する", group_groupusers_path(group), method: :delete, data: { confirm: "本当に退会しますか？"}, class: "btn btn-danger" %>
+      <% else %>
+        <%= link_to "グループに参加する", group_groupusers_path(group), method: :post, class: "btn btn-success" %>
+      <% end %>
     </td>
   </tr>
 </table>

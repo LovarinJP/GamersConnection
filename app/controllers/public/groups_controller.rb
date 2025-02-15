@@ -21,6 +21,7 @@ class Public::GroupsController < ApplicationController
 
   def show
     @group = Group.find(params[:id])
+    @detail_page = true
   end
 
   def edit
@@ -41,6 +42,7 @@ class Public::GroupsController < ApplicationController
   def destroy
     @group = Group.find(params[:id])
     @group.destroy
+    flash[:notice] = "グループを削除しました"
     redirect_to groups_path
   end
 
