@@ -1,13 +1,12 @@
 class Public::GroupusersController < ApplicationController
+  before_action :authenticate_user!
+
   def create
-    group_user = current_user.group_users.new(group_id: params[:group_id])
-    if group_user.save
-      flash[:notice] = "グループに加入しました"
-      redirect_to request.referer
-    else
-      flash[:alert] = "グループに加入できませんでした"
-      redirect_to request.referer
-    end
+    @group = Group.find(params[:group_id])
+    @permit = Permit.find(params[:permit_id])
+    @group_user = GroupUser.create(user_id: @permit.user_id, group_id: params[:group_id])
+    @permit.destroy
+    redirect_to request.referer
   end
 
   def destroy

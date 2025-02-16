@@ -12,6 +12,7 @@ class User < ApplicationRecord
   has_many :comments, dependent: :destroy
   #グループ機能に関するアソシエーション
   has_many :group_users, dependent: :destroy
+  has_many :permits, dependent: :destroy
   #DM機能に関するアソシエーション
   has_many :entries, dependent: :destroy
   has_many :messages, dependent: :destroy

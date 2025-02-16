@@ -33,6 +33,7 @@ Rails.application.routes.draw do
     end
     resources :groups do
       resource :groupusers, only: [:create, :destroy]
+      resource :permits, only: [:create, :destroy]
     end
   end
 

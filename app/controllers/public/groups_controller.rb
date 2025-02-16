@@ -1,4 +1,6 @@
 class Public::GroupsController < ApplicationController
+  before_action :authenticate_user!
+
   def new
     @group = Group.new
   end
@@ -22,6 +24,7 @@ class Public::GroupsController < ApplicationController
   def show
     @group = Group.find(params[:id])
     @detail_page = true
+    @permits = @group.permits.page(params[:page]).per(10)
   end
 
   def edit
