@@ -1,0 +1,35 @@
+<div class="container">
+  <div class="row d-flex justify-content-center">
+    <div class="col-md-6 col-12 text-center">
+      <p id="room" class="pheader" data-room="<%= @room.id %>" data-user="<%= current_user.id %>"><%= @user.name %>さんとのチャット</p>
+    </div>
+  </div>
+
+  <div class="row d-flex justify-content-center">
+    <div class="col-md-6 col-12">
+      <div class="message">
+        <% @messages.each do |message| %>
+          <% if message.user_id == current_user.id %>
+            <%= render 'message', message: message %>
+          <% else %>
+            <div class="left-container d-flex">
+              <%= image_tag @user.get_profile_image(50, 50), style: 'border-radius: 50%' %>
+              <p class="ml-1" style="text-align: let;"><span class="bg-light border" style="padding: 5px; border-radius: 10px;"><%= message.message %></span></p>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <div class="row d-flex- justify-content-center">
+    <div class="col-md-4 col-12 text-center">
+      <%= form_with model: @message, local: false do |f| %>
+        <%= f.text_field :message %>
+        <%= f.submit "送信", class: "btn btn-info" %>
+        <%= f.hidden_field :room_id %>
+      <% end %>
+      <%= link_to "Back", user_path(@user), class: "btn btn-light border" %>
+    </div>
+  </div>
+</div>
