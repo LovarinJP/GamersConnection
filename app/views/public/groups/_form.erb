@@ -1,0 +1,21 @@
+<div class="row mt-3 justify-content-center">
+  <div class="col-md-5 col-12">
+    <%= form_with model: group do |f| %>
+      <div class="form-group">
+        <%= f.label :画像, class: "col-form-label" %>
+        <%= f.file_field :image, accept: "image/*", include_blank: "ファイルを選択" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :グループ名, class: "col-form-label" %>
+        <%= f.text_field :name, class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :グループ紹介, class: "col-form-label" %>
+        <%= f.text_area :caption, class: "form-control" %>
+      </div>
+      <div class="form-group mt-2 d-flex justify-content-end">
+        <%= f.submit "送信", class: "btn btn-info" %>
+      </div>
+    <% end %>
+  </div>
+</div>

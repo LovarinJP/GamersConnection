@@ -1,2 +1,52 @@
-<h1>Public::Groups#show</h1>
-<p>Find me in app/views/public/groups/show.html.erb</p>
+<div class="container justify-content-center">
+  <div class="row mt-3 d-flex justify-content-center">
+    <div class="col-md-4 col-12">
+      <p class="pheader">グループ詳細</p>
+    </div>
+  </div>
+
+  <%= render 'list', group: @group %>
+
+  <div class="row mt-3 d-flex justify-content-center">
+    <div class="col-md-4 col-12">
+      <p class="pheader">承認待ち一覧</p>
+    </div>
+  </div>
+
+  <% if @permits.present? && @group.owner_id == current_user.id %>
+    <table class="table border-top border-bottom table-hover table-inverse">
+      <% @permits.each do |permit| %>
+        <tr>
+          <td class="align-middle">
+            <%= link_to user_path(permit.user.id), class: "text-dark" do %>
+              <%= image_tag permit.user.get_profile_image(50, 50), class: "image" %>
+            <% end %>
+          </td>
+          <td class="align-middle">
+            <%= permit.user.nickname %>
+          </td>
+          <td class="td-body align-middle">
+            <%= permit.user.caption %>
+          </td>
+          <td class="align-middle">
+            <%= link_to "加入許可", group_groupusers_path(@group, permit_id: permit.id), method: :post, class: "btn btn-success" %>
+          </td>
+        </tr>
+      <% end %>
+    </table>
+    <div class="row">
+      <div class="col-4 offset-4 text-center">
+        <div class="pagination">
+          <%= paginate @permits %>
+        </div>
+      </div>
+    </div>
+  <% else %>
+    <div class="row mt-3 d-flex justify-content-center">
+      <div class="col-md-4 col-12">
+        <p>承認待ちユーザーはいません</p>
+      </div>
+    </div>
+  <% end %>
+
+</div>

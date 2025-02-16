@@ -1,2 +1,22 @@
-<h1>今後作成予定</h1>
+<div class="container justify-content-center">
+  <div class="row mt-3 d-flex justify-content-center">
+    <div class="col-md-4 col-12">
+      <p class="pheader">グループ一覧</p>
+    </div>
+  </div>
 
+  <% @groups.each do |group| %>
+    <%= link_to admin_group_path(group) do %>
+      <%= render 'list', group: group %>
+    <% end %>
+  <% end %>
+
+  <div class="row">
+    <div class="col-4 offset-4 text-center">
+      <div class="pagination">
+        <%= paginate @groups %>
+      </div>
+    </div>
+  </div>
+
+</div>
