@@ -28,7 +28,7 @@ Rails.application.routes.draw do
       resources :comments, except: [:edit, :update, :index]
     end
     resources :favorites, only: [:create, :destroy]
-    resources :rooms, only: [:create, :show]
+    resources :rooms, only: [:create, :show, :index]
     resources :messages, only: [:show, :create, :destroy]
     resources :groups do
       resource :groupusers, only: [:create, :destroy]
