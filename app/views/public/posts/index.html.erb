@@ -15,24 +15,33 @@
     </div>
   </div>
 
-  <div class="row d-flex justify-content-center">
-    <div class="col-md-6 col-12 text-center">
-      <p class="pheader">投稿一覧</p>
-    </div>
-  </div>
-
   <div class="tabbox-contents">
     <div class="tabbox box-show" data-tag="All">
+      <div class="row d-flex justify-content-center">
+        <div class="col-md-6 col-12 text-center">
+          <p class="pheader">投稿一覧</p>
+        </div>
+      </div>
       <% @posts.each do |post| %>
         <%= render 'post_list', post: post %>
       <% end %>
     </div>
     <div class="tabbox" data-tag="Follow">
+      <div class="row d-flex justify-content-center">
+        <div class="col-md-6 col-12 text-center">
+          <p class="pheader">フォロー中投稿一覧</p>
+        </div>
+      </div>
       <% @follow_posts.each do |post| %>
         <%= render 'post_list', post: post %>
       <% end %>
     </div>
     <div class="tabbox" data-tag="Favorite">
+      <div class="row d-flex justify-content-center">
+        <div class="col-md-6 col-12 text-center">
+          <p class="pheader">いいね一覧</p>
+        </div>
+      </div>
       <% @favorite_posts.each do |post| %>
         <%= render 'post_list', post: post %>
       <% end %>
