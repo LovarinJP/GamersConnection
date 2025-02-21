@@ -35,9 +35,9 @@
         <tr>
           <td><%= render 'public/relationships/btn', user: @user %></td>
           <% if current_user.id != @user.id && current_user.follows?(@user) && @user.follows?(current_user) %>
-            <td>
-              <%= link_to message_path(@user.id), class: "text-dark" do %>
-                <i class="fa-regular fa-envelope"></i>
+            <td class="bg-dark rounded">
+              <%= link_to message_path(@user.id), class: "icon text-light" do %>
+                <i class="fa-regular fa-envelope d-flex justify-content-center"></i>
               <% end %>
             </td>
           <% end %>
@@ -66,5 +66,23 @@
       </table>
     </div>
   </div>
+
+  <% if @user != current_user %>
+    <div class="row mt-3 d-flex justify-content-center">
+      <div class="col-md-9 offset-md-1 col-12">
+        <% @posts.each do |post| %>
+          <%= render 'public/posts/post_list', post: post %>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-4 offset-4 col-12 text-center">
+        <div class="pagination">
+          <%= paginate @posts %>
+        </div>
+      </div>
+    </div>
+  <% end %>
 </div>
 

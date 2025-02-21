@@ -1,26 +1,26 @@
 <% users.each do |user| %>
-  <div class="border-top border-bottom">
-    <div class="user-row row">
-      <div class="col-md-2 col-4">
-        <%= link_to user_path(user) do %>
-          <%= image_tag user.get_profile_image(100, 100), class: "image" %>
-        <% end %>
+  <%= link_to user_path(user), class: "text-dark" do %>
+    <div class="border-top border-bottom">
+      <div class="user-row row">
+        <div class="col-md-2 col-4">
+          <%= image_tag user.get_profile_image(100, 100) %>
+        </div>
+        <div class="user col-md-4 col-4 text-left">
+          <% if user.is_active == true %>
+            <b><%= user.nickname %></b>
+          <% else %>
+            <b class="text-danger"><%= user.nickname %></b>
+          <% end %>
+        </div>
       </div>
-      <div class="user col-md-4 col-4 text-left">
-        <% if user.is_active == true %>
-          <b><%= user.nickname %></b>
-        <% else %>
-          <b class="text-danger"><%= user.nickname %></b>
-        <% end %>
-      </div>
-    </div>
 
-    <div class="row align-items-end">
-      <div class="user col-md-6 offset-md-2 col-12">
-        <div>
-          <%= user.caption %>
+      <div class="row align-items-end">
+        <div class="user col-md-6 offset-md-2 col-12">
+          <div>
+            <%= user.caption %>
+          </div>
         </div>
       </div>
     </div>
-  </div>
+  <% end %>
 <% end %>
