@@ -17,11 +17,17 @@
       <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container">
           <% if user_signed_in? %>
-            <%= link_to "Top", mypage_path, class: "text-white" %>
+            <%= link_to mypage_path, class: "text-white" do %>
+              <i class="fa-solid fa-earth-asia"></i>
+            <% end %>
           <% elsif admin_signed_in? %>
-            <%= link_to "Top", admin_root_path, class: "text-white" %>
+            <%= link_to admin_root_path, class: "text-white" do %>
+              <i class="fa-solid fa-earth-asia"></i>
+            <% end %>
           <% else %>
-            <%= link_to "Top", root_path, class: "text-white" %>
+            <%= link_to root_path, class: "text-white" do %>
+              <i class="fa-solid fa-earth-asia"></i>
+            <% end %>
           <% end %>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
                         aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -45,6 +51,9 @@
             </li>
             <li class="nav-item">
               <%= link_to '新規投稿', new_post_path, class: 'nav-link text-white' %>
+            </li>
+            <li class="nav-item">
+              <%= link_to 'メッセージ', rooms_path, class: 'nav-link text-white' %>
             </li>
             <li class="nav-item">
               <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'nav-link text-white' %>
@@ -84,9 +93,11 @@
           </div>
         </div>
       </nav>
-      <div class="d-flex justify-content-end">
-        <%= render 'layouts/search' %>
-      </div>
+      <div class="container">
+        <div class="d-flex justify-content-end">
+          <%= render 'layouts/search' %>
+        </div>
+      <div>
     </header>
 
     <main>

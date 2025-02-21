@@ -33,7 +33,14 @@
           <td class="user"><%= link_to @user.followeds.count, followeds_user_path(@user), class: "text-dark" %></td>
         </tr>
         <tr>
-          <td colspan="2"><%= render 'public/relationships/btn', user: @user %></td>
+          <td><%= render 'public/relationships/btn', user: @user %></td>
+          <% if current_user.id != @user.id && current_user.follows?(@user) && @user.follows?(current_user) %>
+            <td>
+              <%= link_to message_path(@user.id), class: "text-dark" do %>
+                <i class="fa-regular fa-envelope"></i>
+              <% end %>
+            </td>
+          <% end %>
         </tr>
         <tr>
           <td colspan="2"><%= link_to "いいね一覧", favorites_user_path(@user), class: "btn btn-light d-flex justify-content-center border rounded" %></td>
