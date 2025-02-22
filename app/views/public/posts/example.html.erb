@@ -1,0 +1,54 @@
+<div class="container">
+  <div class="row d-flex justify-content-center">
+    <div class="col-md-6 col-12 text-center">
+      <p class="pheader">投稿一覧</p>
+    </div>
+  </div>
+  <% @posts.each do |post| %>
+    <div class="border-top border-bottom">
+      <div class="post-row row">
+        <div class="col-md-2 col-4">
+          <%= link_to user_path(post.user_id) do %>
+            <%= image_tag post.user.get_profile_image(100, 100), class: "image" %>
+          <% end %>
+        </div>
+        <div class="post col-md-4 col-4 text-left">
+          <b><%= post.user.nickname %></b>
+        </div>
+        <div class="col-md-2 offset-md-2 col-3 text-secondary">
+          <%= post.created_at.strftime("%-m/%-d %H:%M") %>
+        </div>
+      </div>
+
+      <% if !defined? @detail_page %>
+        <%= link_to post_path(post), class: "text-dark" do %>
+          <div class="row align-items-end">
+            <div class="post col-md-6 col-12 offset-md-2">
+              <div>
+                <%= post.body %>
+              </div>
+            </div>
+            <% if post.image.present? %>
+              <div class="col-md-6 offset-md-2 col-12">
+                <%= image_tag post.get_image(300, 300) %>
+              </div>
+            <% end %>
+          </div>
+        <% end %>
+      <% else %>
+        <div class="row align-items-end">
+          <div class="post col-md-6 offset-md-2 col-12">
+            <div>
+              <%= post.body %>
+            </div>
+          </div>
+          <% if post.image.present? %>
+            <div class="col-md-6 offset-md-2 col-12">
+              <%= image_tag post.get_image(300, 300) %>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+</div>

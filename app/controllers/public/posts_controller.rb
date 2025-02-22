@@ -1,5 +1,5 @@
 class Public::PostsController < ApplicationController
-  before_action :authenticate_user!, except: [:index]
+  before_action :authenticate_user!, except: [:example]
   before_action :is_matching_login_user, only: [:edit, :update]
   before_action :set_editable, only: [:show, :edit]
 
@@ -15,6 +15,10 @@ class Public::PostsController < ApplicationController
     #いいねした投稿の一覧を取得
     favorites_post_ids = Favorite.where(user_id: current_user.id).pluck(:post_id)
     @favorite_posts = Post.where(id: favorites_post_ids).page(params[:page]).per(5)
+  end
+
+  def example
+    @posts = Post.order(created_at: :desc).page(params[:page]).per(5)
   end
 
   def show

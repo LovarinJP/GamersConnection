@@ -24,6 +24,7 @@ Rails.application.routes.draw do
       end
       resource :relationships, only: [:create, :destroy]
     end
+    get "posts/example" => "posts#example", as: "example"
     resources :posts do
       resources :comments, except: [:edit, :update, :index]
     end
