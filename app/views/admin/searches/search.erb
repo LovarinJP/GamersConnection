@@ -1,0 +1,98 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-12">
+      <ul class="tab-list list-unstyled d-flex">
+        <li class="tab tab-active text-center">
+          ユーザー
+        </li>
+        <li class="tab text-center">
+          投稿
+        </li>
+        <li class="tab text-center">
+          グループ
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="tabbox-contents">
+    <div class="tabbox box-show" data-tag="ユーザー">
+      <div class="row d-flex justify-content-center">
+        <div class="col-md-6 col-12 text-center">
+          <p class="pheader">ユーザー検索結果</p>
+        </div>
+      </div>
+      <% @users.each do |user| %>
+        <%= link_to admin_user_path(user), class: "text-dark" do %>
+          <table class="table border-top border-bottom table-hover table-inverse">
+            <tbody>
+              <tr>
+                <td class="result-head">
+                  <%= image_tag user.get_profile_image(75, 75) %>
+                </td>
+                <% if user.is_active == true %>
+                  <td class="td-body align-middle">
+                    <b><%= user.nickname %></b>
+                  </td>
+                <% else %>
+                  <td class="td-body align-middle text-danger">
+                    <b><%= user.nickname %></b>
+                  </td>
+                <% end %>
+               <td class="result-foot align-middle"><%= user.caption %></td>
+              </tr>
+            </tbody>
+          </table>
+        <% end %>
+      <% end %>
+    </div>
+    <div class="tabbox" data-tag="投稿">
+      <div class="row d-flex justify-content-center">
+        <div class="col-md-6 col-12 text-center">
+          <p class="pheader">投稿検索結果</p>
+        </div>
+      </div>
+      <% @posts.each do |post| %>
+        <%= link_to admin_post_path(post), class: "text-dark" do %>
+          <table class="table border-top border-bottom table-hover table-inverse">
+            <tbody>
+              <tr>
+                <td class="result-head"><%= image_tag post.user.get_profile_image(50, 50) %> <%= post.user.nickname %></td>
+                <td class="td-body align-middle">
+                  <b><%= post.body %></b>
+                </td>
+                <td class="result-foot align-middle"><i class="fa-regular fa-comment"></i> <%= post.comments.count %></td>
+              </tr>
+            </tbody>
+          </table>
+        <% end %>
+      <% end %>
+    </div>
+    <div class="tabbox" data-tag="グループ">
+      <div class="row d-flex justify-content-center">
+        <div class="col-md-6 col-12 text-center">
+          <p class="pheader">グループ検索結果</p>
+        </div>
+      </div>
+      <% @groups.each do |group| %>
+        <%= link_to admin_group_path(group), class: "text-dark" do %>
+          <table class="table border-top border-bottom table-hover table-inverse">
+            <tbody>
+              <tr>
+                <td class="result-head">
+                  <%= image_tag group.get_image(75, 75) %>
+                </td>
+                <td class="td-body align-middle">
+                  <b><%= group.name %></b>
+                </td>
+                <td class="result-foot align-middle">
+                  <%= group.caption %>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>

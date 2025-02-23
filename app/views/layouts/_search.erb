@@ -1,6 +1,15 @@
-<% if user_signed_in? || admin_signed_in? %>
+<% if user_signed_in? %>
   <div class="search-form">
     <%= form_with url: search_path, local: true, method: :get do |f| %>
+      <%= f.text_field :word %>
+      <%= f.button :type => "submit" do %>
+        <i class="fa-solid fa-magnifying-glass"></i>
+      <% end %>
+    <% end %>
+  </div>
+<% elsif admin_signed_in? %>
+  <div class="search-form">
+    <%= form_with url: admin_search_path, local: true, method: :get do |f| %>
       <%= f.text_field :word %>
       <%= f.button :type => "submit" do %>
         <i class="fa-solid fa-magnifying-glass"></i>

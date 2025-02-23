@@ -41,6 +41,7 @@ Rails.application.routes.draw do
   namespace :admin do
     root to: "homes#top"
     patch "users/withdraw" => "users#withdraw"
+    get "search" => "searches#search"
     resources :posts, only: [:index, :show, :destroy] do
       resources :comments, only: [:show, :destroy]
     end

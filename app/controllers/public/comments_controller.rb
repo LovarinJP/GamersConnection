@@ -1,4 +1,6 @@
 class Public::CommentsController < ApplicationController
+  before_action :authenticate_user!
+
   def new
     @comment = Comment.new
   end
@@ -32,4 +34,5 @@ class Public::CommentsController < ApplicationController
   def comment_params
     params.require(:comment).permit(:comment, :image)
   end
+
 end

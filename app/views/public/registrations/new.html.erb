@@ -1,7 +1,7 @@
 <div class="container justify-content-center">
   <div class="row mt-3 d-flex justify-content-center">
     <div class="col-3 text-left">
-      <p class="pheader">Sign up</p>
+      <p class="pheader">新規登録</p>
     </div>
   </div>
 
@@ -26,12 +26,12 @@
         </div>
 
         <div class="field">
-          <%= f.label :email %><br />
+          <%= f.label :メールアドレス %><br />
           <%= f.email_field :email, autocomplete: "email", class: "form-control" %>
         </div>
 
         <div class="field">
-          <%= f.label :password %>
+          <%= f.label :パスワード %>
           <% if @minimum_password_length %>
           <em>(<%= @minimum_password_length %> characters minimum)</em>
           <% end %><br />
@@ -39,12 +39,12 @@
         </div>
 
         <div class="field">
-          <%= f.label :password_confirmation %><br />
+          <%= f.label :パスワード確認 %><br />
           <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control" %>
         </div>
 
         <div class="actions">
-          <%= f.submit "Sign up", class: "btn btn-info mt-2" %>
+          <%= f.submit "登録", class: "btn btn-info mt-2" %>
         </div>
       <% end %>
 

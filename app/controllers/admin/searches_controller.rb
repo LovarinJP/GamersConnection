@@ -1,6 +1,6 @@
-class Public::SearchesController < ApplicationController
-  before_action :authenticate_user!
-
+class Admin::SearchesController < ApplicationController
+  before_action :authenticate_admin!
+  
   def search
     word = params['word']
     @users = partical_user(word)

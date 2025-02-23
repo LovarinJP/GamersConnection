@@ -12,7 +12,7 @@
     <td class="align-middle">
       <% if defined? @detail_page %>
         <% group.group_users.each do |group_user| %>
-          <%= group_user.user.nickname %>
+          <%= group_user.user.nickname %><br>
         <% end %>
       <% else %>
         参加者：<%= group.group_users.count %>人
