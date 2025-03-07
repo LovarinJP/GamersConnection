@@ -15,8 +15,8 @@
       <div class="text-center">
         <b><%= @user.nickname %></b>
       </div>
-      <div class="text-center">
-        <%= @user.caption %>
+      <div class="text-left">
+        <%= simple_format(@user.caption) %>
       </div>
       <div class="text-left">
         投稿数　　：<%= @user.posts.count %>

@@ -7,7 +7,7 @@
       <%= group.name %>
     </td>
     <td class="td-body align-middle">
-      <%= group.caption %>
+      <%= simple_format(group.caption) %>
     </td>
     <td class="align-middle">
       <% if defined? @detail_page %>

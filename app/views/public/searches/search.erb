@@ -39,7 +39,7 @@
                     <b><%= user.nickname %></b>
                   </td>
                 <% end %>
-               <td class="result-foot align-middle"><%= user.caption %></td>
+               <td class="result-foot align-middle"><%= simple_format(user.caption) %></td>
               </tr>
             </tbody>
           </table>
@@ -59,7 +59,7 @@
               <tr>
                 <td class="result-head"><%= image_tag post.user.get_profile_image(50, 50) %> <%= post.user.nickname %></td>
                 <td class="td-body align-middle">
-                  <b><%= post.body %></b>
+                  <b><%= simple_format(post.body) %></b>
                 </td>
                 <td class="result-foot align-middle"><i class="fa-regular fa-comment"></i> <%= post.comments.count %></td>
               </tr>
@@ -86,7 +86,7 @@
                   <b><%= group.name %></b>
                 </td>
                 <td class="result-foot align-middle">
-                  <%= group.caption %>
+                  <%= simple_format(group.caption) %>
                 </td>
               </tr>
             </tbody>

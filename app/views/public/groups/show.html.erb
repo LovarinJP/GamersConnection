@@ -25,7 +25,7 @@
             <%= permit.user.nickname %>
           </td>
           <td class="td-body align-middle">
-            <%= permit.user.caption %>
+            <%= simple_format(permit.user.caption) %>
           </td>
           <td class="align-middle">
             <%= link_to "加入許可", group_groupusers_path(@group, permit_id: permit.id), method: :post, class: "btn btn-success" %>

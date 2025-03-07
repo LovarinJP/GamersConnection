@@ -1,4 +1,7 @@
-<div class="right-container d-flex justify-content-end">
-  <p id="message_<%= message.id %>" class="bg-info text-light" style="padding: 5px; border-radius: 10px; "><%= message.message %></p>
+<div class="right-container d-flex justify-content-end mb-3">
+  <div>
+  <p id="message_<%= message.id %>" class="bg-info text-light" style="padding: 5px; margin: 0px; border-radius: 10px; "><%= message.message %></p>
+  <%= message.created_at.strftime("%-m/%-d %H:%M") %>
+  </div>
   <%= button_to "削除", message_path(message), method: :delete, data: { confirm: "本当に削除しますか？" }, class: "btn btn-light border ml-2", remote: true, id: "delete_message_#{message.id}" %>
 </div>

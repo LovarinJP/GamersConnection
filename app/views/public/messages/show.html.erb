@@ -12,9 +12,12 @@
           <% if message.user_id == current_user.id %>
             <%= render 'message', message: message %>
           <% else %>
-            <div class="left-container d-flex">
+            <div class="left-container d-flex mb-3">
               <%= image_tag @user.get_profile_image(50, 50), style: 'border-radius: 50%' %>
-              <p class="ml-1" style="text-align: let;"><span class="bg-light border" style="padding: 5px; border-radius: 10px;"><%= message.message %></span></p>
+              <div>
+              <p style="text-align: left; margin: 0px; "><span class="bg-light border" style="padding: 5px; border-radius: 10px; "><%= message.message %></span></p>
+              <%= message.created_at.strftime("%-m/%-d %H:%M") %>
+              </div>
             </div>
           <% end %>
         <% end %>

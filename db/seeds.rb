@@ -19,7 +19,9 @@ User.create!(
     email: "guest@example.com",
     password: Devise.friendly_token[0, 20],
     name: "ゲストユーザー",
-    nickname: "ゲスト"
+    nickname: "ゲスト",
+    caption: "これはゲストユーザーです
+    様々な機能を試すことができます"
     },
 
     {
