@@ -1,19 +1,4 @@
 ja:
-  user:
-    Name: "名前"
-    email: "メールアドレス"
-    encrypted_password: "パスワード"
-    Nickname: "表示名"
-    caption: "紹介文"
-  post:
-    body: "本文"
-  comment:
-    comment: "コメント"
-  group:
-    name: "名前"
-    caption: "説明文"
-  message:
-    message: "メッセージ"
   activerecord:
     errors:
       messages:
@@ -21,6 +6,28 @@ ja:
         restrict_dependent_destroy:
           has_one: "%{record}が存在しているので削除できません"
           has_many: "%{record}が存在しているので削除できません"
+    models:
+      user: ユーザー
+      post: 投稿
+      comment: コメント
+      group: グループ
+      message: メッセージ
+    attributes:
+      user:
+        name: 名前
+        email: メールアドレス
+        encrypted_password: パスワード
+        nickname: 表示名
+        caption: 紹介文
+      post:
+        body: 本文
+      comment:
+        comment: コメント
+      group:
+        name: 名前
+        caption: 説明文
+      message:
+        message: メッセージ
   date:
     abbr_day_names:
     - 日
